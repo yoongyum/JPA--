@@ -47,7 +47,7 @@ public class PostController {
 		return "새로운 1:1 문의를 등록했습니다.";
 	}
 	
-	@PostMapping("/post/{id}")
+	@GetMapping("/post/{id}")
 	public String getPost(@PathVariable int id, Model model) {
 		model.addAttribute("post",postService.getPost(id));
 		return "post/getPost";

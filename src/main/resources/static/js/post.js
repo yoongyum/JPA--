@@ -10,10 +10,6 @@ let postObject = {
 			_this.insertPost();
 		});
 		
-		// "#btn-getPost"
-		$("#btn-getPost").on("click", () => {
-			_this.getPost();
-		});
 	},
 	
 	insertPost: function() {
@@ -40,13 +36,6 @@ let postObject = {
 		});
 
 	},
-	getPost: function(){
-		alert("상세보기 요청됨");
-		let post = {
-			title : $("#title").val(),
-			content : $("#content").val()
-		}	
-	}
 }
  
 // postObject 객체의 init() 함수 호출. 

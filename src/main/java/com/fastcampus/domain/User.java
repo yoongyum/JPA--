@@ -1,11 +1,15 @@
 package com.fastcampus.domain;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -35,8 +39,18 @@ public class User {
 	@CreationTimestamp // 현재 시간 정보가 자동으로 설정된다.
 	private Timestamp createDate;
 	
-//	@OneToMany(mappedBy = "user")
-//	private List<Post> postList = new ArrayList<Post>();
+	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+	private List<Post> postList = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+	private List<Reply> replyList = new ArrayList<>();
+
+	//댓글 리스트에 추가
+	public void addReply(Reply reply, Post post) {
+		this.replyList.add(reply);
+		reply.setUser(this);
+		post.addReply(reply);
+	}
 }
 
 

@@ -6,7 +6,7 @@
 	<c:if test="${!empty postList }">
 		<div class="card">
 			<c:forEach var="post" items="${postList.content }">
-				<form action="/post/${post.id}" method="post">				
+				<form action="/post/${post.id}" method="get">				
 					<div class="card-body">
 						<h4 class="card-title">${post.title }</h4>
 						<button class="btn btn-secondary" type="submit" id="btn-getPost">상세 보기</button>
