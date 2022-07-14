@@ -21,7 +21,7 @@
 				<button id="btn-back" class="btn btn-secondary mx-1" onclick="history.back()">돌아가기</button>
 				<c:if test="${principal.username == post.user.username}">
 					<button id="btn-edit" class="btn btn-warning mx-1"  onclick="location.href='/post/updatePost/${post.id}'">수정하기</button>
-					<button id="btn-delete" class="btn btn-danger mx-1">삭제하기</button>
+					<button id="btn-delete" class="btn btn-danger mx-1" onclick="location.href='/post/deletePost/${post.id}'">삭제하기</button>
 				</c:if>
 			</div>
 		</div>

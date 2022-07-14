@@ -18,24 +18,33 @@ public class PostService {
 	@Autowired
 	private PostRepository postRepository;
 
+	//게시글 등록
 	public void insertPost(Post post) {
 		postRepository.save(post);
 	}
 
+	//게시글 목록 조회
 	public Page<Post> getPostList(Pageable pageable) {
 		return postRepository.findAll(pageable);
 	}
 
+	//게시글 조회
 	public Post getPost(int id) {
 		return postRepository.findById(id).orElseThrow();
 	}
 
+	//게시글 수정
 	public void updatePost(int id, PostDto postDto) {
 		Post post = postRepository.findById(id).orElseThrow();
 		post.setTitle(postDto.getTitle());
 		post.setContent(postDto.getContent());
 		
 		postRepository.save(post);
+	}
+
+	//게시글 삭제
+	public void deletePost(int id) {
+		postRepository.deleteById(id);
 	}
 
 }
